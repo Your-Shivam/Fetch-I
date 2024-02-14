@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Users</title>
+    <style>
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: white;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#userDataContainer{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.container {
+    text-align: center;
+}
+
+button {
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: rgb(0, 255, 0);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.user-card {
+    border: 1px solid whitesmoke;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 10px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-card img {
+    border-radius: 50%;
+    max-width: 80px;
+    max-height: 80px;
+}
+
+.user-info {
+    margin-left: 20px;
+    text-align: left;
+}
+
+p {
+    margin: 0;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="fetchButton">Fetch Users</button>
+        <div id="userDataContainer"></div>
+    </div>
+    <script>
+    document.getElementById('fetchButton').addEventListener('click', fetchUsers);
+
+        function fetchUsers() {
+            fetch('https://reqres.in/api/users')
+                .then(response => response.json())
+                .then(data => displayUsers(data.data))
+                .catch(error => console.error('Error fetching users:', error));
+        }
+        
+        function displayUsers(users) {
+            const userDataContainer = document.getElementById('userDataContainer');
+            userDataContainer.innerHTML = '';
+        
+            users.forEach(user => {
+                const userCard = document.createElement('div');
+                userCard.className = 'user-card';
+        
+                const avatar = document.createElement('img');
+                avatar.src = user.avatar;
+                avatar.alt = `${user.first_name} ${user.last_name}'s avatar`;
+        
+                const userInfo = document.createElement('div');
+                userInfo.className = 'user-info';
+                
+                const name = document.createElement('p');
+                name.textContent = `Name: ${user.first_name} ${user.last_name}`;
+        
+                const email = document.createElement('p');
+                email.textContent = `Email: ${user.email}`;
+        
+                userInfo.appendChild(name);
+                userInfo.appendChild(email);
+        
+                userCard.appendChild(avatar);
+                userCard.appendChild(userInfo);
+        
+                userDataContainer.appendChild(userCard);
+            });
+        }
+        </script>
+</body>
+</html>
