@@ -3,8 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>User Information Form</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: wheat;
+    padding: 60px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input {
+    padding: 8px;
+    border: 1px solid whitesmoke;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px;
+    background-color: #007bff;
+    margin-top: 40px;
+    color: whitesmoke;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#displayArea {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border: 1px solid black;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid white;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: whitesmoke;
+}
+    </style>
 </head>
 <body>
 
@@ -24,6 +90,8 @@
         <div id="displayArea"></div>
     </div>
 
-    <script src="index.js"></script>
+    <script>
+        
+    </script>
 </body>
 </html>
